@@ -5,8 +5,8 @@ using UnityEngine;
 public class Repairable : MonoBehaviour
 {
     public GameObject fixedBot;
-    float tarnish = 100;
-    float repairRate = 1;
+    public float tarnish = 100;
+    public float repairRate = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Repairable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Repaired();
     }
 
     public void Repair() 

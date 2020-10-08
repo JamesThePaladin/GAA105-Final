@@ -20,7 +20,7 @@ public class Interactable : MonoBehaviour
     {
         if (isInRange) //if we're in range to interact
         {
-            if (Input.GetKeyDown(interactKey)) //and Player presses key
+            if (Input.GetKey(interactKey)) //and Player presses key
             {
                 interactAction.Invoke(); //activate event
             }
