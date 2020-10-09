@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
     [Header("Game Objectives")]
     public List<GameObject> brokenRobots;
 
+    [Header("UI Stuff")]
+    public Text objectiveCount;
+
     [Header("Sound Stuff")]
     public AudioSource music;
     public AudioListener master;
     public List<AudioSource> sfx;
+    [HideInInspector]
     public Slider masterSlider;
+    [HideInInspector]
     public Slider musicSlider;
     //public Slider sfxSlider;
     [HideInInspector]
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        objectiveCount.text = "x " + brokenRobots.Count;
+
         master = FindObjectOfType<AudioListener>();
         music = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
         if (PauseMenu.isOptions)
@@ -57,12 +64,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        UpdateObjective();
+        CheckForGameWin();
+        
         if (PauseMenu.isOptions)
         {
             CheckForSliders(); 
         }
-
-        CheckForGameWin();
     }
 
     /// <summary>
@@ -71,6 +79,11 @@ public class GameManager : MonoBehaviour
     public void GameStart() 
     {
 
+    }
+
+    public void UpdateObjective() 
+    {
+        objectiveCount.text = "x " + brokenRobots.Count;
     }
 
     public void LoadOptions() 
