@@ -19,12 +19,6 @@ public class PlayerController : Controller
         //set movement x and y values to appropriate axis
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
-        //exit application build
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
     private void FixedUpdate()
