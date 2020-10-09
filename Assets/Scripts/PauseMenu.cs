@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
+    public static bool isOptions = false;
     public GameObject menuPanel;
     public GameObject menuBackground;
     public GameObject pauseMenuUI;
@@ -32,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     {
         optionsMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
+        isOptions = true;
     }
 
     public void CloseOptions() 
@@ -39,6 +41,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.instance.SaveOptions();
         optionsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+        isOptions = false;
     }
 
     public void Resume() 
@@ -60,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         menuPanel.SetActive(true);
         menuBackground.SetActive(true);
         pauseMenuUI.SetActive(true);
+        optionsMenuUI.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5568596093973281715}
   - component: {fileID: 8501792852666426768}
   - component: {fileID: 7571083758310846498}
+  - component: {fileID: 5759436604017453078}
   m_Layer: 0
   m_Name: Damaged Robot
   m_TagString: Untagged
@@ -95,7 +96,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b838c11b753eb84dac888cee466d583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixedBot: {fileID: 0}
+  fixedBot: {fileID: 8624194410203888825, guid: c73e0e0886817064a97ffb0abb460d4a,
+    type: 3}
+  tarnish: 100
+  repairRate: 10
+--- !u!114 &5759436604017453078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171735726076549062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd70821ab6cb0746921a0a35f68dfe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5869120870553698702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,20 +159,25 @@ PrefabInstance:
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5494475171176368133, guid: aeb51897f50dc694eb566c3df326ead5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 7256947900052812017, guid: aeb51897f50dc694eb566c3df326ead5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.9437485
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256947900052812017, guid: aeb51897f50dc694eb566c3df326ead5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5488197
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256947900052812017, guid: aeb51897f50dc694eb566c3df326ead5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.32617188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256947900052812017, guid: aeb51897f50dc694eb566c3df326ead5,
         type: 3}
