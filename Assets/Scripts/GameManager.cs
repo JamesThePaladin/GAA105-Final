@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Objectives")]
     public List<GameObject> brokenRobots;
+    public SpriteRenderer interactNotification;
 
     [Header("UI Stuff")]
     public Text objectiveCount;
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     //[HideInInspector]
     //public float sfxVolume;
     [HideInInspector]
-    public float musicVolume; 
+    public float musicVolume;
     //TODO: sfx and music volume DURING GAME PLAY
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        interactNotification = GameObject.FindWithTag("InteractNotification").GetComponent<SpriteRenderer>();
         objectiveCount.text = "x " + brokenRobots.Count;
 
         master = FindObjectOfType<AudioListener>();
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (PauseMenu.isOptions)
         {
             masterSlider = GameObject.FindWithTag("MasterSlider").GetComponent<Slider>();
-            musicSlider = GameObject.FindWithTag("MusicSlider").GetComponent<Slider>(); 
+            musicSlider = GameObject.FindWithTag("MusicSlider").GetComponent<Slider>();
         }
 
         //sfxSlider = GameObject.FindWithTag("sfxSlider").GetComponent<Slider>();
@@ -66,38 +68,38 @@ public class GameManager : MonoBehaviour
     {
         UpdateObjective();
         CheckForGameWin();
-        
+
         if (PauseMenu.isOptions)
         {
-            CheckForSliders(); 
+            CheckForSliders();
         }
     }
 
     /// <summary>
     /// handles multiplayer at the start of the game
     /// </summary>
-    public void GameStart() 
+    public void GameStart()
     {
 
     }
 
-    public void UpdateObjective() 
+    public void UpdateObjective()
     {
         objectiveCount.text = "x " + brokenRobots.Count;
     }
 
-    public void LoadOptions() 
+    public void LoadOptions()
     {
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", masterVolume);
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
         //sfxVolume = PlayerPrefs.GetFloat("SFXVolume", sfxVolume);
-        
+
     }
-    public void LoadOptionsGUI() 
+    public void LoadOptionsGUI()
     {
         masterSlider.value = PlayerPrefs.GetFloat("MasterSliderValue", masterSlider.value);
         musicSlider.value = PlayerPrefs.GetFloat("MusicSliderValue", musicSlider.value);
-       // sfxSlider.value = PlayerPrefs.GetFloat("SFXSliderValue", sfxSlider.value);
+        // sfxSlider.value = PlayerPrefs.GetFloat("SFXSliderValue", sfxSlider.value);
     }
 
     /// <summary>
@@ -115,14 +117,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CheckForVolumeChange() 
+    public void CheckForVolumeChange()
     {
         masterVolume = masterSlider.value;
-       // sfxVolume = sfxSlider.value;
+        // sfxVolume = sfxSlider.value;
         musicVolume = musicSlider.value;
     }
 
-    public void CheckForSliders() 
+    public void CheckForSliders()
     {
         if (masterSlider == null)
         {
@@ -136,8 +138,8 @@ public class GameManager : MonoBehaviour
 
         //if (sfxSlider == null)
         //{
-            //sfxSlider = GameObject.FindWithTag("sfxSlider").GetComponent<Slider>();
-       // }
+        //sfxSlider = GameObject.FindWithTag("sfxSlider").GetComponent<Slider>();
+        // }
 
         if (music == null)
         {
@@ -145,11 +147,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void CheckForGameWin() 
+    void CheckForGameWin()
     {
-        if (brokenRobots.Count <= 0) 
+        if (brokenRobots.Count <= 0)
         {
             //Load Win Scene
         }
+    }
+
+    public void NotifyPlayer() 
+    {
+        interactNotification.enabled = true;
+    }
+
+    public void DeNotifyPlayer()
+    {
+        interactNotification.enabled = false;
     }
 }

@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
     public bool isInRange;
     public KeyCode interactKey;
     public UnityEvent interactAction;
+    public Canvas healthNotification;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,8 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             isInRange = true;
+            GameManager.instance.NotifyPlayer();
+            healthNotification.enabled = true;
         }
     }
 
@@ -40,6 +43,8 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInRange = false;
+            GameManager.instance.DeNotifyPlayer();
+            healthNotification.enabled = false;
         }
     }
 }
